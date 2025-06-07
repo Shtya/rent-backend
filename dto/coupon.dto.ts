@@ -1,28 +1,36 @@
-import { IsNotEmpty, IsString, IsNumber, IsDateString } from 'class-validator';
+import {
+  IsString,
+  IsEnum,
+  IsNumber,
+  IsDate,
+  IsOptional,
+  Min,
+} from 'class-validator';
+import { Type } from 'class-transformer';
+import { DiscountType } from '../entities/coupon.entity';
 
 export class CreateCouponDto {
-  @IsString({ message: 'Code must be a string' })
-  @IsNotEmpty({ message: 'Code is required' })
+  @IsString()
   code: string;
 
-  @IsNumber({}, { message: 'Discount percentage must be a number' })
-  @IsNotEmpty({ message: 'Discount percentage is required' })
-  discount_percentage: number;
-
-  @IsDateString({}, { message: 'Valid from must be a valid date' })
-  @IsNotEmpty({ message: 'Valid from is required' })
-  valid_from: Date;
-
-  @IsDateString({}, { message: 'Valid to must be a valid date' })
-  @IsNotEmpty({ message: 'Valid to is required' })
-  valid_to: Date;
-
-  @IsNumber({}, { message: 'Usage limit must be a number' })
-  @IsNotEmpty({ message: 'Usage limit is required' })
+  @IsNumber()
+  @Min(1)
   usage_limit: number;
+
+  @IsEnum(DiscountType)
+  discount_type: DiscountType;
+
+  @IsNumber()
+  discount_value: number;
+
+  @IsDate()
+  @Type(() => Date)
+  start_date: Date;
+
+  @IsDate()
+  @Type(() => Date)
+  end_date: Date;
 }
-
-
 
 import { PartialType } from '@nestjs/mapped-types';
 

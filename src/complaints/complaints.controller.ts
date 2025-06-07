@@ -23,12 +23,12 @@ export class ComplaintsController {
   @Post()
   async create(@Body() dto: CreateComplaintDto, @Req() req) {
     const user = req.user;
-    return this.complaintsService.createComplaint(dto, user);
+    return this.complaintsService.createComplaint(dto, user ,  dto.serviceId);
   }
 
-  @Roles('admin')
-  @Get()
-  async findAll(@Query() query) {
+
+  @Get("/my")
+  async findAll(@Query() query , @Req() req ) {
     const { page, limit, search, sortBy, role, sortOrder } = query;
     return this.complaintsService.findAll(
       'complaints',
@@ -38,8 +38,28 @@ export class ComplaintsController {
       sortBy,
       sortOrder,
       [],
-      ["user" , 'replies'],
+      ["user" , 'replies' , "service" ],
       [],
+      {user : {id : req.user.id}}
+    );
+  }
+
+
+
+  @Get(":serviceId/serivce")
+  async findAllForProvider(@Query() query , @Param("serviceId") serviceId ) {
+    const { page, limit, search, sortBy, role, sortOrder } = query;
+    return this.complaintsService.findAll(
+      'complaints',
+      search,
+      page,
+      limit,
+      sortBy,
+      sortOrder,
+      [],
+      ["user" , 'replies' , "service"  ],
+      [],
+      {service : {id : serviceId}}
     );
   }
 

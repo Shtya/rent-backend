@@ -1,0 +1,32 @@
+
+
+- notification ( mobile )
+- settings ( mobile )
+- loyalty points ( mobile )
+
+
+
+- super admin 
+	- statistics  ( 2 pages in super admin)
+	- 
+
+
+
+
+
+
+- logical 
+	- put on the service entity key for this service is pay for hours of days 
+	- how to apply the coupon on the service
+	 
+
+
+- discuss 
+	- coupon -> who can create coupon
+
+
+
+
+
+
+

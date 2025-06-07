@@ -57,9 +57,8 @@ export class Setting {
   // save the fav services ids []
   // best service as pin also 
   // save the fav product ids []
+  // about the app
   
-
-
   @Column({ type: 'jsonb', default: { ar: '', en: '' } })
   terms_condition: { ar: string; en: string };
 

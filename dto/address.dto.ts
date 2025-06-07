@@ -1,40 +1,33 @@
-import { IsNotEmpty, IsNumber, IsString, IsBoolean, IsOptional } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsOptional, IsString, IsBoolean, IsNumber } from 'class-validator';
+import { TypeAddress } from '../entities/address.entity';
 
 export class CreateAddressDto {
-  @IsNumber({}, { message: 'User ID must be a number' })
-  @IsNotEmpty({ message: 'User ID is required' })
-  user_id: number;
+  @IsString()
+  @IsNotEmpty()
+  apartment_number: string;
 
-  @IsOptional()
-  apartment_number_en?: string;
+  @IsString()
+  @IsNotEmpty()
+  building_name: string;
 
-  @IsOptional()
-  apartment_number_ar?: string;
+  @IsString()
+  @IsNotEmpty()
+  street_name: string;
 
+  @IsString()
   @IsOptional()
-  building_name_en?: string;
+  additional_details: string;
 
+  @IsEnum(TypeAddress)
   @IsOptional()
-  building_name_ar?: string;
+  address_type: TypeAddress;
 
+  @IsBoolean()
   @IsOptional()
-  street_name_en?: string;
-
-  @IsOptional()
-  street_name_ar?: string;
-
-  @IsOptional()
-  additional_details_en?: string;
-
-  @IsOptional()
-  additional_details_ar?: string;
-
-  @IsBoolean({ message: 'is_default must be a boolean' })
-  @IsOptional()
-  is_default?: boolean;
+  is_default: boolean;
 }
 
 
 import { PartialType } from '@nestjs/mapped-types';
-
 export class UpdateAddressDto extends PartialType(CreateAddressDto) {}
+

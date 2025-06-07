@@ -21,6 +21,12 @@ import { ComplaintsModule } from './complaints/complaints.module';
 import { AuthGuard } from './auth/auth.guard';
 import { BannerModule } from './banner/banner.module';
 import { ChatModule } from './chat/chat.module';
+import { ReservationModule } from './reservation/reservation.module';
+import { AddressModule } from './address/address.module';
+import { JwtService } from '@nestjs/jwt';
+import { FavoriteModule } from './favorite/favorite.module';
+import { CouponModule } from './coupon/coupon.module';
+import { LoyaltyModule } from './loyalty/loyalty.module';
 
 @Module({
   imports: [
@@ -58,7 +64,13 @@ import { ChatModule } from './chat/chat.module';
     ServiceModule,
     ComplaintsModule,
     BannerModule,
-    ChatModule
+    ChatModule,
+    ReservationModule,
+    AddressModule,
+    FavoriteModule,
+    // ContactUsModule,
+    CouponModule,
+    LoyaltyModule
   ],
   controllers: [AppController],
   providers: [AppService, LoggingValidationPipe , QueryFailedErrorFilter  ],

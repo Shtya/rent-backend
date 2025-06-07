@@ -16,7 +16,7 @@ import { MailService } from 'common/nodemailer';
     }),
     ConfigModule,
   ],
-  providers: [AuthService , JwtService , MailService],
+  providers: [AuthService , JwtService , MailService  ],
   controllers: [AuthController ],
 })
 export class AuthModule {}

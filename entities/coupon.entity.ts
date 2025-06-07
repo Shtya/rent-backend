@@ -1,6 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity()
+export enum DiscountType {
+  PERCENTAGE = 'percentage',
+  FIXED = 'fixed',
+}
+
+@Entity('coupons')
 export class Coupon {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,17 +19,23 @@ export class Coupon {
   @Column({ unique: true })
   code: string;
 
-  @Column()
-  discount_percentage: number;
-
-  @Column()
-  valid_from: Date;
-
-  @Column()
-  valid_to: Date;
-
-  @Column()
+  @Column({ type: 'int', default: 1 })
   usage_limit: number;
+
+  @Column({ type: 'int', default: 0 })
+  usage_count: number;
+
+  @Column({ type: 'enum', enum: DiscountType })
+  discount_type: DiscountType;
+
+  @Column({ type: 'float' })
+  discount_value: number;
+
+  @Column({ type: 'timestamp' })
+  start_date: Date;
+
+  @Column({ type: 'timestamp' })
+  end_date: Date;
 
   @CreateDateColumn()
   created_at: Date;

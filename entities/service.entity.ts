@@ -16,6 +16,8 @@ import { Order } from './order.entity';
 import { CartItem } from './cart.entity';
 import { Favorite } from './favorite.entity';
 import { Rating } from './rating.entity';
+import { Reservation } from './reservation.entity';
+import { Complaint } from './complaint.entity';
 
 @Entity()
 export class Service {
@@ -109,6 +111,9 @@ export class Service {
   @JoinTable()
   relatedServices: Service[];
 
+  @OneToMany(() => Reservation, (reservation) => reservation.user)
+  reservations: Reservation[];
+
   // Relations
   @OneToMany(() => Order, (order) => order.service)
   orders: Order[];
@@ -130,6 +135,9 @@ export class Service {
 
   @ManyToOne(() => SubCategory, (subCategory) => subCategory.services)
   subCategory: SubCategory;
+
+  @OneToMany(() => Complaint, (complaint) => complaint.user)
+  complaints: Complaint[];
 
   @CreateDateColumn()
   created_at: Date;

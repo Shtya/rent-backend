@@ -15,11 +15,7 @@ import { Rating } from 'entities/rating.entity';
 import { Service } from 'entities/service.entity';
 import { SubCategory } from 'entities/sub-category.entity';
 import { Category } from 'entities/category.entity';
-import { LoyaltyReward } from 'entities/loyalty/loyalty-reward.entity';
-import { LoyaltyRule } from 'entities/loyalty/loyalty-rule.entity';
-import { UserLoyaltyPoints } from 'entities/loyalty/user-loyalty-points.entity';
-import { ProviderLoyaltyStats } from 'entities/loyalty/provider-loyalty-stats.entity';
-import { UserRewardClaim } from 'entities/loyalty/user-reward-claim.entity';
+import {  LoyaltyReward , LoyaltyRule  , UserLoyaltyPoints  , UserRewardClaim  } from 'entities/loyalty.entity';
 
 
 async function seedSettings(dataSource: DataSource) {
@@ -614,7 +610,7 @@ async function runSeeder() {
     username: 'postgres.sghvszzxubiyocwhfczj',
     password: 'ahmedshtya-083',
     database: 'rent-project',
-    entities: [Setting , User , Address , Banner , Cart , CartItem , Complaint , Coupon , Domain , DomainConfiguration , Faq , Favorite , Order , Payment , Rating , Service , SubCategory , Category , LoyaltyReward , LoyaltyRule  , UserLoyaltyPoints , ProviderLoyaltyStats , UserRewardClaim  ],
+    entities: [Setting , User , Address , Banner , Cart , CartItem , Complaint , Coupon , Domain , DomainConfiguration , Faq , Favorite , Order , Payment , Rating , Service , SubCategory , Category , LoyaltyReward , LoyaltyRule  , UserLoyaltyPoints  , UserRewardClaim  ],
     synchronize: true,
     logging: true,
   });

@@ -5,10 +5,9 @@ import { Order } from './order.entity';
 import { Cart } from './cart.entity';
 import { Favorite } from './favorite.entity';
 import { Rating } from './rating.entity';
-import { UserLoyaltyPoints } from './loyalty/user-loyalty-points.entity';
-import { UserRewardClaim } from './loyalty/user-reward-claim.entity';
-import { ProviderLoyaltyStats } from './loyalty/provider-loyalty-stats.entity';
+import { UserLoyaltyPoints , UserRewardClaim , UserPointHistory } from './loyalty.entity';
 import { Complaint } from './complaint.entity';
+import { Reservation } from './reservation.entity';
 
 
 export enum UserRole {
@@ -70,6 +69,10 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 
+  @OneToMany(() => Reservation, reservation => reservation.user)
+  reservations: Reservation[];
+
+
   @OneToMany(() => Address, address => address.user)
   addresses: Address[];
 
@@ -94,8 +97,9 @@ export class User {
   @OneToMany(() => UserRewardClaim, urc => urc.user)
   rewardClaims: UserRewardClaim[];
 
-  @OneToMany(() => ProviderLoyaltyStats, pls => pls.provider)
-  providerStats: ProviderLoyaltyStats[];
+
+  @OneToMany(() => UserPointHistory, pls => pls.user)
+  pointHistory: UserPointHistory[];
 
   @OneToMany(() => Complaint, complaint => complaint.user)
   complaints: Complaint[];

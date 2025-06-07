@@ -6,6 +6,9 @@ export class CreateComplaintDto {
   @IsString()
   message: string;
 
+  @IsNumber()
+  serviceId: number;
+
   @IsEnum(ComplaintStatus)
   @IsOptional()
   status?: ComplaintStatus;

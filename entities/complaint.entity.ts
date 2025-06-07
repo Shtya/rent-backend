@@ -8,6 +8,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { User } from './user.entity';
+import { Service } from './service.entity';
 
 export enum ComplaintStatus {
   ANSWERED = 'answered',
@@ -18,6 +19,10 @@ export enum ComplaintStatus {
 export class Complaint {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @ManyToOne(() => Service, (service) => service.complaints)
+  service: Service;
+
 
   @ManyToOne(() => User, (user) => user.complaints)
   user: User;
