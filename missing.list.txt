@@ -13,6 +13,25 @@
 
 
 
+- this in the dashboard of the system that i build it
+	نظام الولاء
+		* النقاط التي يتم منحها
+		* عدد الطلبات المطلوب لتحقيق نقاط
+
+	نظام المكافات
+		* عدد النقاط المطلوبة للحصول على الجائزة
+		* اسم الجائزة / المكافأة
+
+
+
+- this details will apper on the app for the user tht order someting like service or product 
+	نقاط الولاء
+		* إجمالي نقاط المكتسبة 
+		* النقاط المطلوبة للمكافأة التالية
+
+
+
+
 
 
 - logical 
@@ -23,6 +42,11 @@
 
 - discuss 
 	- coupon -> who can create coupon
+	- setting of profit
+
+
+
+
 
 
 
