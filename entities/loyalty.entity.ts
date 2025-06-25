@@ -26,6 +26,26 @@ export enum PointTransactionType {
 }
 
 
+@Entity()
+export class LoyaltyReward {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  reward_name: string;
+
+  @Column()
+  required_points: number;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @OneToMany(() => UserRewardClaim, claim => claim.reward)
+  claims: UserRewardClaim[];
+}
 
 @Entity()
 export class UserRewardClaim {
@@ -87,26 +107,7 @@ export class UserPointHistory {
   created_at: Date;
 }
 
-@Entity()
-export class LoyaltyReward {
-  @PrimaryGeneratedColumn()
-  id: number;
 
-  @Column()
-  reward_name: string;
-
-  @Column()
-  required_points: number;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  @OneToMany(() => UserRewardClaim, claim => claim.reward)
-  claims: UserRewardClaim[];
-}
 
 @Entity()
 export class LoyaltyRule {
